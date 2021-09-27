@@ -11,7 +11,7 @@ namespace SampleApp.Tests
         {
         }
 
-        [TestCase(1, "Adam")]
+        [TestCase(1, "Adamm")]
         [TestCase(2, "Susan")]
         [TestCase(3, "Julie")]
         public void Does_Username_Match_Id(int userId, string name)

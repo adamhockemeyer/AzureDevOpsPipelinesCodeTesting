@@ -103,3 +103,4 @@
 /mnt/c/Users/adhocke/source/repos/DotNetTestingAzurePipelines/SampleApp.Tests/obj/Debug/netcoreapp3.1/SampleApp.Tests.dll
 /mnt/c/Users/adhocke/source/repos/DotNetTestingAzurePipelines/SampleApp.Tests/obj/Debug/netcoreapp3.1/SampleApp.Tests.pdb
 /mnt/c/Users/adhocke/source/repos/DotNetTestingAzurePipelines/SampleApp.Tests/obj/Debug/netcoreapp3.1/SampleApp.Tests.genruntimeconfig.cache
+/mnt/c/Users/adhocke/source/repos/DotNetTestingAzurePipelines/SampleApp.Tests/bin/Debug/netcoreapp3.1/CoverletSourceRootsMapping
