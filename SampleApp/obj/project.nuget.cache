@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vpsYG8/vZgIJx+jaPjDQ/35oz1KmZcll+gv1LfW1CvGBVtkiXgObLJv4lT0qG/zhU2t9R8N82+oBn+Rrx5XKrg==",
+  "dgSpecHash": "zieWjEtLZRd9PdtZE06grb95Wsxe/xxB/6C2VfcBQafZ11iRU+4wbRGrJ83E/8ASzOTyvS3GDYObDD80xqWPRw==",
   "success": true,
-  "projectFilePath": "/mnt/c/Users/adhocke/source/repos/DotNetTestingAzurePipelines/SampleApp/SampleApp.csproj",
+  "projectFilePath": "C:\\Users\\adhocke\\source\\repos\\DotNetTestingAzurePipelines\\SampleApp\\SampleApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
