@@ -62,7 +62,7 @@ stages:
 
 - stage: Deploy
   jobs:
-  - job: Azure-WebApp
+  - job: Azure_WebApp
     steps:
     - task: AzureRmWebAppDeployment@4
       inputs:
