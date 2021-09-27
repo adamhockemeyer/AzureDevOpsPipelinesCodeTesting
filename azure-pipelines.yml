@@ -72,4 +72,4 @@ stages:
         azureSubscription: 'Azure-DevOpsPipelinesCodeTesting'
         appType: 'webAppLinux'
         WebAppName: 'DevOpsPipelinesCodeTesting'
-        packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+        packageForLinux: '$(Build.ArtifactStagingDirectory)/DotNetTestingAzurePipelines/SampleApp.zip'
