@@ -70,10 +70,11 @@ stages:
       inputs:
         buildType: 'current'
         targetPath: '$(Pipeline.Workspace)'
+        artifactName: 'DotNetTestingAzurePipelines'
     - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
         azureSubscription: 'Azure-DevOpsPipelinesCodeTesting'
         appType: 'webAppLinux'
         WebAppName: 'DevOpsPipelinesCodeTesting'
-        packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
+        packageForLinux: '$(Pipeline.Workspace)/DotNetTestingAzurePipelines/*.zip'
