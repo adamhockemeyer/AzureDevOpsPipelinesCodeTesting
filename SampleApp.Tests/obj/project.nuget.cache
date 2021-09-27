@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "A/kVB9KsnG58tzAXyaZ22xpRXbIXtgUUTOvW8ouDMANpNCov2mQPP2tOwi7WO5NXqWsA7gt5MFwOZ8xhrRRFNQ==",
+  "dgSpecHash": "uTHKIlgv0kUSW2bdahee+3hBwrv/Rp9fl1l3c6ZvIfkrODjHy5CI+9+BjPQY2LNGA4KcEqt7PiuXcBNdA2D68w==",
   "success": true,
   "projectFilePath": "/mnt/c/Users/adhocke/source/repos/DotNetTestingAzurePipelines/SampleApp.Tests/SampleApp.Tests.csproj",
   "expectedPackageFiles": [
+    "/home/adhocke/.nuget/packages/coverlet.collector/3.1.0/coverlet.collector.3.1.0.nupkg.sha512",
     "/home/adhocke/.nuget/packages/microsoft.codecoverage/16.4.0/microsoft.codecoverage.16.4.0.nupkg.sha512",
     "/home/adhocke/.nuget/packages/microsoft.csharp/4.0.1/microsoft.csharp.4.0.1.nupkg.sha512",
     "/home/adhocke/.nuget/packages/microsoft.dotnet.internalabstractions/1.0.0/microsoft.dotnet.internalabstractions.1.0.0.nupkg.sha512",
