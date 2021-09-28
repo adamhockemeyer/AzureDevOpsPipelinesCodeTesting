@@ -101,14 +101,12 @@ stages:
 - stage: LoadTest
   jobs:
   - job:
-    steps:
-    - task: AzurePowerShell@5
+    steps:   
+    - task: Bash@3
       inputs:
-        azureSubscription: 'Azure-DevOpsPipelinesCodeTesting'
-        ScriptType: 'InlineScript'
-        Inline: |
-            $ rgName=DevOpsPipelinesCodeTesting; aciName=k6loadtest
-            $ az group create -n $rgName -l eastus
-            $ az container create -g $rgName -n $aciName --no-wait --image loadimpact/k6 --command-line "k6 run github.com/loadimpact/k6/samples/http_get.js" --restart-policy Never
-            $ az container logs -g $rgName -n $aciName --follow
-        azurePowerShellVersion: 'LatestVersion'
+        targetType: 'inline'
+        script: |
+          rgName=DevOpsPipelinesCodeTesting; aciName=k6loadtest
+          az group create -n $rgName -l eastus
+          az container create -g $rgName -n $aciName --no-wait --image loadimpact/k6 --command-line "k6 run github.com/loadimpact/k6/samples/http_get.js" --restart-policy Never
+          az container logs -g $rgName -n $aciName --follow
