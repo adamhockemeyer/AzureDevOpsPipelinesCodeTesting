@@ -85,7 +85,6 @@ stages:
   jobs:
   - job:
     steps:
-
     - task: DotNetCoreCLI@2
       displayName: 'dotnet test'
       inputs:
@@ -93,9 +92,4 @@ stages:
         arguments: '--configuration $(buildConfiguration) --filter TestCategory=UI --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura'
         publishTestResults: true
         projects: '**/SampleApp.Tests/*.csproj'   
-    - task: PublishCodeCoverageResults@1
-      displayName: 'Publish code coverage report'
-      inputs:
-        codeCoverageTool: 'Cobertura'
-        summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
-      continueOnError: false
+
