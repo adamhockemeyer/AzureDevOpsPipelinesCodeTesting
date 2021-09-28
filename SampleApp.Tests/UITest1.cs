@@ -40,7 +40,7 @@ namespace SampleApp.Tests
             switch (browser)
             {
                 case "Chrome":
-                    driver = new ChromeDriver(options);
+                    driver = new ChromeDriver();
                     break;
                 case "Firefox":
                     driver = new FirefoxDriver();
