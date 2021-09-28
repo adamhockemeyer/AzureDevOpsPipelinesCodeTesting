@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 
 namespace SampleApp.Tests
 {
+    [TestFixture, Category("Unit")]
     public class Tests
     {
         [SetUp]

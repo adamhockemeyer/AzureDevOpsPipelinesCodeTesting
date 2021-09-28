@@ -7,6 +7,7 @@ using OpenQA.Selenium.IE;
 
 namespace SampleApp.Tests
 {
+    [TestFixture, Category("UI")]
     public class UITests
     {
 
