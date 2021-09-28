@@ -19,8 +19,8 @@ namespace SampleApp.Tests
         {
             // Arrange
             var controller = new HomeController(new NullLogger<HomeController>());
-            // Act
 
+            // Act
             string result = controller.GetUserName(userId);
 
             // Assert
