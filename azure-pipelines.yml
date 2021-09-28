@@ -48,6 +48,10 @@ stages:
   jobs:
   - job: UnitTest
     steps:
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: 'webdrivermanager chrome --linkpath AUTO'
     - task: DotNetCoreCLI@2
       displayName: 'dotnet test'
       inputs:
