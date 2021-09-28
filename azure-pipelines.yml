@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
   solution: '**/*.sln'
@@ -85,21 +85,7 @@ stages:
   jobs:
   - job:
     steps:
-    - task: Bash@3
-      inputs:
-        targetType: 'inline'
-        script: |
-          sudo apt-get update 
-          
-          sudo apt-get install google-chrome-stable
-    - task: Bash@3
-      inputs:
-        targetType: 'inline'
-        script: 'pip install webdrivermanager'
-    - task: Bash@3
-      inputs:
-        targetType: 'inline'
-        script: 'webdrivermanager chrome --linkpath AUTO'
+
     - task: DotNetCoreCLI@2
       displayName: 'dotnet test'
       inputs:
