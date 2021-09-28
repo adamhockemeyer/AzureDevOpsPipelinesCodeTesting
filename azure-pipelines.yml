@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
   solution: '**/*.sln'
@@ -44,18 +44,10 @@ stages:
         targetPath: '$(Build.ArtifactStagingDirectory)' 
         artifactName: 'DotNetTestingAzurePipelines'
 
-- stage: Test
+- stage: UnitTest
   jobs:
-  - job: UnitTest
+  - job:
     steps:
-    - task: Bash@3
-      inputs:
-        targetType: 'inline'
-        script: 'pip install webdrivermanager'
-    - task: Bash@3
-      inputs:
-        targetType: 'inline'
-        script: 'webdrivermanager chrome --linkpath AUTO'
     - task: DotNetCoreCLI@2
       displayName: 'dotnet test'
       inputs:
@@ -69,6 +61,7 @@ stages:
         codeCoverageTool: 'Cobertura'
         summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
       continueOnError: false
+      
 
 
 - stage: Deploy
@@ -87,3 +80,22 @@ stages:
         appType: 'webAppLinux'
         WebAppName: 'DevOpsPipelinesCodeTesting'
         packageForLinux: '$(Pipeline.Workspace)/SampleApp.zip'
+
+- stage: UITest
+  jobs:
+  - job:
+    steps:
+
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet test'
+      inputs:
+        command: 'test'
+        arguments: '--configuration $(buildConfiguration) --filter TestCategory=UI --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura'
+        publishTestResults: true
+        projects: '**/SampleApp.Tests/*.csproj'   
+    - task: PublishCodeCoverageResults@1
+      displayName: 'Publish code coverage report'
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
+      continueOnError: false
