@@ -66,20 +66,25 @@ stages:
 
 - stage: Deploy
   jobs:
-  - job: Azure_WebApp
-    steps:
-    - task: DownloadPipelineArtifact@2
-      inputs:
-        buildType: 'current'
-        targetPath: '$(Pipeline.Workspace)'
-        artifactName: 'DotNetTestingAzurePipelines'
-    - task: AzureRmWebAppDeployment@4
-      inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: 'Azure-DevOpsPipelinesCodeTesting'
-        appType: 'webAppLinux'
-        WebAppName: 'DevOpsPipelinesCodeTesting'
-        packageForLinux: '$(Pipeline.Workspace)/SampleApp.zip'
+  - deployment: DeployWeb
+    displayName: Deploy Web App
+    environment: 'Stage'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: 'current'
+              targetPath: '$(Pipeline.Workspace)'
+              artifactName: 'DotNetTestingAzurePipelines'
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'Azure-DevOpsPipelinesCodeTesting'
+              appType: 'webAppLinux'
+              WebAppName: 'DevOpsPipelinesCodeTesting'
+              packageForLinux: '$(Pipeline.Workspace)/SampleApp.zip'
 
 - stage: UITest
   jobs:
