@@ -43,7 +43,13 @@ stages:
       inputs:
         targetPath: '$(Build.ArtifactStagingDirectory)' 
         artifactName: 'DotNetTestingAzurePipelines'
-
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'devopstesting-containerregistry'
+        repository: 'loadtest'
+        command: 'buildAndPush'
+        Dockerfile: '**/LoadTest/Dockerfile'
+        tags: 'latest'
 - stage: UnitTest
   jobs:
   - job:
