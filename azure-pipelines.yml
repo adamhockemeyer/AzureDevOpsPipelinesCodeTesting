@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 variables:
   solution: '**/*.sln'
@@ -93,6 +93,8 @@ stages:
               packageForLinux: '$(Pipeline.Workspace)/SampleApp.zip'
 
 - stage: UITest
+  pool:
+    vmImage: 'windows-latest'
   jobs:
   - job:
     steps:
@@ -105,8 +107,6 @@ stages:
         projects: '**/SampleApp.Tests/*.csproj'   
 
 - stage: LoadTest
-  pool:
-    vmImage: 'ubuntu-latest'
   jobs:
   - job:
     steps:   
