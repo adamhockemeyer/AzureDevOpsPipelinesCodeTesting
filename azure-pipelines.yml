@@ -111,4 +111,4 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           rgName=DevOpsPipelinesCodeTesting; aciName=k6loadtest;
-          az container create -g $rgName -n $aciName --no-wait --image loadimpact/k6 --command-line "k6 run - < AzureDevOpsPipelinesCodeTesting/LoadTest/k6-loadtest.js" --restart-policy Never;
+          az container create -g $rgName -n $aciName --no-wait --image loadimpact/k6 --command-line "k6 run -<AzureDevOpsPipelinesCodeTesting/LoadTest/k6-loadtest.js" --restart-policy Never;
