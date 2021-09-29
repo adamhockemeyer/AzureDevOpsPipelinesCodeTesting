@@ -43,7 +43,13 @@ stages:
       inputs:
         targetPath: '$(Build.ArtifactStagingDirectory)' 
         artifactName: 'DotNetTestingAzurePipelines'
-
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'devopstesting-containerregistry'
+        repository: 'loadtest'
+        command: 'buildAndPush'
+        Dockerfile: '**/LoadTest/Dockerfile'
+        tags: 'latest'
 - stage: UnitTest
   jobs:
   - job:
@@ -104,6 +110,12 @@ stages:
   jobs:
   - job:
     steps:   
-    - task: k6-load-test@0
+    - task: AzureCLI@2
       inputs:
-        filename: '$(Build.SourcesDirectory)/AzureDevOpsPipelinesCodeTesting/LoadTest/k6-loadtest.js'
+        azureSubscription: 'Azure-DevOpsPipelinesCodeTesting'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          
+          rgName=DevOpsPipelinesCodeTesting; aciName=k6loadtest;
+          az container create -g $rgName -n $aciName --no-wait --image loadimpact/k6 --command-line "k6 run - <AzureDevOpsPipelinesCodeTesting\LoadTest\k6-loadtest.js" --restart-policy Never;
