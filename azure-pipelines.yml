@@ -118,4 +118,4 @@ stages:
         inlineScript: |
           
           rgName=DevOpsPipelinesCodeTesting; aciName=k6loadtest;
-          az container create -g $rgName -n $aciName --no-wait --image docker pull devopstestingahock.azurecr.io/loadtest:latest --assign-identity  --restart-policy Never;
+          az container create -g $rgName -n $aciName --no-wait --image docker pull devopstestingahock.azurecr.io/loadtest:latest --registry-login-server devopstestingahock.azurecr.io --assign-identity  --restart-policy Never;
