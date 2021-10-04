@@ -116,5 +116,5 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az container create -g DevOpsPipelinesCodeTesting -n k6loadtest --no-wait --image devopstestingahock.azurecr.io/loadtest:latest --registry-login-server devopstestingahock.azurecr.io --registry-username $(ACR-USERID) --registry-password $(ACR-PASSWORD) --command-line "k6 run k6-loadtest.js" --restart-policy Never;
+          az container create -g DevOpsPipelinesCodeTesting -n k6loadtest --image devopstestingahock.azurecr.io/loadtest:latest --registry-login-server devopstestingahock.azurecr.io --registry-username $(ACR-USERID) --registry-password $(ACR-PASSWORD) --command-line "k6 run k6-loadtest.js" --restart-policy Never;
 
