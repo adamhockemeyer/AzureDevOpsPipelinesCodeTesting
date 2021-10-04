@@ -108,7 +108,7 @@ stages:
 
 - stage: LoadTest
   jobs:
-  - job:
+  - job: K6_Test_ACI
     steps:   
     - task: AzureCLI@2
       inputs:
@@ -116,7 +116,5 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          
-          rgName=DevOpsPipelinesCodeTesting; aciName=k6loadtest;
-          az container create -g $rgName -n $aciName --no-wait --command-line "k6 run k6-loadtest.js" --image devopstestingahock.azurecr.io/loadtest:latest --registry-login-server devopstestingahock.azurecr.io --registry-username $(ACR-USERID) --registry-password $(ACR-PASSWORD) --restart-policy Never;
-#          az container logs -g $rgName -n $aciName --follow
+          az container create -g DevOpsPipelinesCodeTesting -n k6loadtest --no-wait --image devopstestingahock.azurecr.io/loadtest:latest --registry-login-server devopstestingahock.azurecr.io --registry-username $(ACR-USERID) --registry-password $(ACR-PASSWORD) --restart-policy Never;
+
